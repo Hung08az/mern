@@ -2,7 +2,7 @@
 
 const express = require('express');
 const mongoose = require('mongoose');
-
+const cors = require("cors");
 //create out express
 
 const app = express();
@@ -28,8 +28,8 @@ app.get('/', (req, res) => {
 })
 const PORT = 5000;
 const TodosRoute = require('./routes/Todos');
+app.use(cors());
 app.use('/todos', TodosRoute)
-
 // start server
 app.listen(PORT, () => {
     console.log(`Listening at port ${PORT}`);
