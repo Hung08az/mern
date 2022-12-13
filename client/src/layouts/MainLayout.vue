@@ -82,11 +82,4 @@ const toggleLeftDrawer = () => {
   leftDrawerOpen.value = !leftDrawerOpen.value;
 };
 
-const goToAboutYou = () => {
-  router.push('/about-you');
-};
-const gotoListUser = () => {
-  router.push('/list-user');
-};
-
 </script>
