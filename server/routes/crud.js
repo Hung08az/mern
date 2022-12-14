@@ -6,13 +6,18 @@ const router = express.Router();
 
 
 router.get('/', (req, res) => {
-    connection.query('select * from user', (err, array, fields) => {
+    connection.query('select * from `user`', (err, array, fields) => {
+        res.send(array);
+    })
+})
+router.get('/:id', (req, res) => {
+    connection.query('select * from user where `id`=?', +req.params.id, (err, array, fields) => {
         res.send(array);
     })
 })
 router.post('/new', (req, res) => {
-    console.log(req.body);
-    connection.query('INSERT INTO user (username, password, role) VALUES (?,?,?)', [req.body.username, req.body.password, req.body.role], (err,
+    const { name, username, password, email, phone, zipcode, city, role } = req.body;
+    connection.query('INSERT INTO user (name, username, password,email, phone, zipcode, city, role) VALUES (?,?,?,?,?,?,?,?)', [name, username, password, email, phone, zipcode, city, role], (err,
         results) => {
         if (err) {
             res.send({ "insert": "fail" });
@@ -23,8 +28,9 @@ router.post('/new', (req, res) => {
     })
 })
 router.put('/update/:id', (req, res) => {
-    console.log(req.params);
-    connection.query('update user set `username`=?, `password`=?, `role`=?  where `id`=?', [req.body.username, req.body.password, req.body.role, req.params], (err,
+    const { name, username, password, email, phone, zipcode, city, role } = req.body;
+    const { id } = req.params;
+    connection.query('update user set `name`=?, `username`=?, `password`=?, `email`=?, `phone`=?, `zipcode`=?, `city`=?, `role`=?  where `id`=?', [name, username, password, email, phone, zipcode, city, role, id], (err,
         results) => {
         if (err) {
             res.send({ "update": "fail" });
@@ -35,14 +41,13 @@ router.put('/update/:id', (req, res) => {
     })
 })
 router.delete('/delete/:id', (req, res) => {
-    console.log('req.params', req.params);
-    connection.query('delete from user where id=?', +req.params.id, (err,
+    const { id } = req.params;
+    connection.query('delete from user where id=?', +id, (err,
         results) => {
         if (err) {
             res.send({ "delete": "fail" });
         }
         else {
-            console.log(`output->helloworld`, results)
             res.send({ "delete": "success" });
         }
     })

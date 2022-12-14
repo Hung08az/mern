@@ -39,11 +39,11 @@
         <q-item
           clickable
           tag="a"
-          to="/todo"
+          to="/users"
         >
           <q-item-section>
-            <q-item-label>Todo List</q-item-label>
-            <q-item-label caption>create task</q-item-label>
+            <q-item-label>List Page</q-item-label>
+            <q-item-label caption>view list user</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
