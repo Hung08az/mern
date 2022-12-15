@@ -19,11 +19,6 @@ const connect = async () => {
     }
 }
 connect();
-
-const users = await user.findAll();
-console.log(users.every(user => user instanceof User)); // true
-console.log("All users:", JSON.stringify(users, null, 2));
-
 router.get('/', (req, res) => {
     connection.query('select * from `user`', (err, array, fields) => {
         res.send(array);
