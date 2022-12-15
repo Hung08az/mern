@@ -1,13 +1,7 @@
-DELETE http://localhost:5000/crud/DELETE/2
+POST http://localhost:5000/crud/login
 Content-Type: application/json
 
 {
-    "name":"hungasdasd",
     "username":"hungnh",
-    "password":123,
-    "email": "hungnh08@gmail.com",
-    "phone": "0123123",
-    "zipcode":"123",
-    "city":"australia",
-    "role":1
+    "password": 123
 }

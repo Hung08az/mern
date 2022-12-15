@@ -6,6 +6,8 @@ require('dotenv').config();
 const app = express();
 
 const crudRoute = require('./routes/crud');
+
+
 app.use(cors());
 app.use(express.json(), express.urlencoded({ extended: true }));
 app.use('/crud', crudRoute);
